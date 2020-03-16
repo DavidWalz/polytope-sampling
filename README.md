@@ -2,7 +2,7 @@
 This package provides functions to uniformly sample points subject to a system of linear inequality constraints, `A1 x <= b1` (convex polytope), and linear equality constraints, `A2 x = b2` (affine subspace).
 
 ### Example
-Let's sample 1000 from R² subject to following inequality constraints
+Let's sample 1000 points from R² subject to following inequality constraints
 * 0.1 <= x1 <= 0.9
 * 0.2 <= x2 <= 1
 * 0.5 x1 + x2 <= 1
