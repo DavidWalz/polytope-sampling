@@ -5,7 +5,6 @@ constraints, :math:`Ax = b` (affine projection).
 
 A comparison of MCMC algorithms to generate uniform samples over a convex polytope is
 given in [Chen2018]_. Here, we use the Hit & Run algorithm described in [Smith1984]_.
-
 The R-package `hitandrun`_ provides similar functionality to this module.
 
 References
