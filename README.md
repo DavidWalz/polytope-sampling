@@ -1,26 +1,28 @@
 # polytope-sampling
-This package provides functions to uniformly sample points subject to a system of linear inequality constraints, $A_1 x <= b_1$ (convex polytope), and linear equality constraints, $A_2 x = b_2$ (affine subspace).
+This package provides functions to uniformly sample points subject to a system of linear inequality constraints, `A1 x <= b1` (convex polytope), and linear equality constraints, `A2 x = b2` (affine subspace).
 
 ### Example
-Let's consider the example of sampling $x \in \mathbb{R}^2$ subject to
-\begin{align}
-0.1 \leq x_1 &\leq 0.9 \\
-0.2 \leq x_2 &\leq 1 \\
-1/2 x_1 + x_2 &\leq 1 \\
-0.2 \leq -2/3 x_1 + x_2
-\end{align}
+Let's sample 1000 from R² subject to following inequality constraints
+* 0.1 <= x1 <= 0.9
+* 0.2 <= x2 <= 1
+* 0.5 x1 + x2 <= 1
+* -2/3 x1 + x2 >= 0.2
 
 ```python
 import polytope
-X = polytope.sample(
-    n_points=1000,
-    lower=[-0.1, -0.2],
-    upper=[0.7, 0.9],
-    A1=np.array([[1 / 2, 1], [2 / 3, -1]]),
-    b1=np.array([1, -0.2])
-)
+import numpy as np
+
+# bounds
+lower = [0.1, 0.2]
+upper = [0.7, 0.9]
+
+# inequality constraints
+A1 = np.array([[1 / 2, 1], [2 / 3, -1]])
+b1 = np.array([1, -0.2])
+
+points = polytope.sample(n_points=1000, lower=lower, upper=upper, A1=A1, b1=b1)
 ```
-![](examples/example.png)
+![](example/example.png)
 
 ### References
 A comparison of MCMC algorithms to generate uniform samples over a convex polytope is given in [Chen2018].
